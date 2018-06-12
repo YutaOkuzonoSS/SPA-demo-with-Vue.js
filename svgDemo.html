@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG DEMO</title>
+
+	<!-- Vue core -->		
+    <script src="https://cdn.jsdelivr.net/vue/2.0.3/vue.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<div class="container">
+		<h1>バインディングを用いたSVGの更新</h1>
+	    <div id="svg_demo_app1">
+	      <svg viewbox="0 0 300 300" width="300" height="300">
+	        <line :x1="x1" :y1="y1" :x2="x2" :y2="y2" stroke="black"></line>
+	      </svg>
+	      <div>
+	        <p>start x</p><input type="range" v-model="x1" max=300 min=0>
+	        <p>start y</p><input type="range" v-model="y1" max=300 min=0>
+	        <p>e.n.d x</p><input type="range" v-model="x2" max=300 min=0>
+	        <p>e.n.d y</p><input type="range" v-model="y2" max=300 min=0>
+	      </div>
+	    </div>
+	    <script>
+	      new Vue({
+	        el: "#svg_demo_app1",
+	        data: {
+	          x1: 100,
+	          y1: 100,
+	          x2: 200,
+	          y2: 200,
+	        }
+	      })
+	    </script>
+    </div>
+
+    <div class="container mt-3">
+    	<div id="svg_demo_app2">
+	    	<svg width="200" height="200"  viewBox="-20 -60 200 200" xmlns="http://www.w3.org/2000/svg">
+			  	<path id="p1" d="M 0,100 A 100 100 0 0 1 200,100" stroke="black" fill="none" />
+			  	<text font-size="20" stroke="black" dy="-10">
+			    	<textpath xlink:href="#p1">{{input_text}}</textpath>
+		    	</text>
+			    <text font-size="20" stroke="black" dy="20">
+			    	<textpath xlink:href="#p1">{{input_text}}</textpath>
+			  	</text>
+			</svg>
+			<input v-model="input_text">
+		</div>
+	    <script>
+	      new Vue({
+	        el: "#svg_demo_app2",
+	        data: {
+	          input_text: "Type what you want."
+	        }
+	      })
+	    </script>
+    </div>
+
+    <div class="container mt-3">
+    	<div id="svg_demo_app3">
+	    	<svg viewbox="0 0 300 300" width="300" height="300">
+		  		<circle r=50 cx=150 cy=150 @click="active = !active" :class="{'active': active}"></circle>
+			</svg>
+		</div>
+	    <script>
+			new Vue({
+		        el: "#svg_demo_app3",
+		          	data: {
+	    				active: false
+				  	}
+			})
+	    </script>
+	    <style type="text/css">
+	    	circle{
+			  fill: #333;
+			  transition: all 0.4s cubic-bezier(.96,.04,.04,.96);
+			  stroke: rgb(119, 0, 255);
+			  stroke-width: 1px;
+			}
+			.active{
+			  fill: white;
+			  stroke-width: 50px;
+			}
+	    </style>
+    </div>
+	
+</body>
+</html>

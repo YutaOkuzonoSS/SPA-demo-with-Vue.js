@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Animation DEMO</title>
+
+	<!-- Vue core -->		
+    <script src="https://cdn.jsdelivr.net/vue/2.1.8/vue.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<div class="container mt-3">
+		<div class="card-columns">
+      	<div class="card" style="width: 18rem;">
+  		    <h5 class="card-title">transitionを使ったアニメーション</h5>
+	        <div class="card-body">
+				<div id="example-1">
+				  <button class="btn btn-primary" v-on:click="show = !show">
+				    Toggle
+				  </button>
+				    <transition name="slide-fade">
+					    <p v-if="show">hello</p>
+				  	</transition>
+				</div>
+				<script type="text/javascript">
+					new Vue({
+					  el: '#example-1',
+					  data: {
+					    show: true
+					  }
+					})
+				</script>
+				<style type="text/css">
+					/* enter、 leave アニメーションで異なる間隔やタイミング関数を利用することができます */
+					.slide-fade-enter-active {
+					  transition: all .3s ease;
+					}
+					.slide-fade-leave-active {
+					  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+					}
+					.slide-fade-enter, .slide-fade-leave-to
+					/* .slide-fade-leave-active below version 2.1.8 */ {
+					  transform: translateX(10px);
+					  opacity: 0;
+					}
+				</style>
+			</div>
+		</div>
+
+	      	<div class="card" style="width: 18rem;">
+	  		    <h5 class="card-title">animate.cssとの連携</h5>
+		        <div class="card-body">
+		          	<div id="example-2">
+  						<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+					  	<button class="btn btn-primary" @click="show = !show">
+					    Toggle render
+					  	</button>
+					  <transition
+					    name="custom-classes-transition"
+					    enter-active-class="animated tada"
+					    leave-active-class="animated bounceOutRight">
+					    <p v-if="show">hello</p>
+					  </transition>
+					</div>
+		        </div>
+		      </div>
+		  </div>
+		
+		<script type="text/javascript">
+			new Vue({
+			  el: '#example-2',
+			  data: {
+			    show: true
+			  }
+			})
+		</script>
+	</div>
+	
+</body>
+</html>

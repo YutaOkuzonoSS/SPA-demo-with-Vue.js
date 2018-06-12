@@ -1,0 +1,11 @@
+.route-view-enter-active, .route-view-leave-active{
+	transition: 0.5s;
+}
+
+.route-view-enter{
+	opacity: 0;
+}
+
+.route-view-leave{
+	opacity: 0;
+}

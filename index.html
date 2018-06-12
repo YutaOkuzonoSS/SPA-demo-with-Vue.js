@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>SPADemo</title>
+    <!-- Vue core -->
+    <script src="https://cdn.jsdelivr.net/vue/2.0.3/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.router/2.0.1/vue-router.min.js"></script>
+    
+    <!-- Vue Scripts -->
+    <script type="text/javascript" src="js/my_spa.js"></script>
+    <script type="text/javascript" src="js/template.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <!-- Utils -->
+    <script type="text/javascript" src="js/util.js"></script>
+
+
+</head>
+
+<body>
+    <div id="header" class="container mt-2">
+        <page-header>
+            <h1 slot="header">ヘッダー</h1>
+        </page-header>
+    </div>
+    <div id="app">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><router-link to="/top" class="nav-link">HOME</router-link></li>
+                <li class="nav-item"><router-link to="/users" class="nav-link">Users</router-link></li>
+                <li class="nav-item"><router-link to="/items" class="nav-link">Items</router-link></li>
+                <li class="nav-item"><router-link to="/form" class="nav-link">Contact Us</router-link></li>
+                <li class="nav-item"><router-link to="/vue_animation_demo" class="nav-link">Vue Animation DEMO</router-link></li>
+                <li class="nav-item"><router-link to="/svg_demo" class="nav-link">SVG DEMO</router-link></li>
+                <li class="nav-item"><router-link to="/todo_demo" class="nav-link">TODO App DEMO</router-link></li>
+            </ul>
+        </div>
+        <div class="container mt-3">
+            <transition name="route-view">
+                <router-view></router-view>
+            </transitin>
+        </div>
+    </div>
+</body>
+
+</html>
